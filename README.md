@@ -205,13 +205,7 @@ maintenance_system.create_maintenance_schedule(
 | RF    | 0.92     | 0.89      | 0.86   | 0.88     | 0.96    |
 | XGB   | 0.93     | 0.91      | 0.87   | 0.89     | 0.97    |
 
-### Feature Importance
 
-![Feature Importance](images/feature_importance.png)
-
-### Maintenance Schedule
-
-![Maintenance Schedule](images/maintenance_schedule.png)
 
 ## Use Cases
 
