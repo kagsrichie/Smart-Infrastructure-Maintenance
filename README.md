@@ -64,6 +64,10 @@ This project implements a complete predictive maintenance solution that helps in
 - **Interactive Dashboards**: HTML dashboards for monitoring model performance and maintenance needs
 - **Full Data Pipeline**: From data preprocessing to model deployment and maintenance scheduling
 
+Interactive Dashboard
+The system includes a comprehensive HTML dashboard  for operational monitoring and decision support. This interactive interface serves as the central command center for maintenance teams.
+(deployment_dashboard.html)
+![Interactive Dashboard](images/deployment_dashboard.html)
 ## Installation
 
 ```bash
