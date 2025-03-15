@@ -50,11 +50,6 @@ In practical terms, this system delivers concrete business value:
 
 The project ultimately bridges the gap between advanced machine learning techniques and practical industrial applications, creating a system that maintenance teams can rely on for daily decision-making while providing strategic insights to management about equipment reliability and maintenance efficiency.
 
-# Smart-infrastructure-maintenance
-
-A comprehensive machine learning system for predicting equipment failures and optimizing maintenance schedules in industrial and infrastructure settings.
-
-![Predictive Maintenance Dashboard](images/dashboard_preview.png)
 
 ## Overview
 
