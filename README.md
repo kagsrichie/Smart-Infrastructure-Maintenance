@@ -1,4 +1,4 @@
-# Smart Infrastructure Predictive Maintenance: Project Overview
+# Smart Infrastructure Predictive Maintenance
 
 ## Core Goal
 
