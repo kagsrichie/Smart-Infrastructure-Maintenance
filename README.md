@@ -224,26 +224,6 @@ The system is designed to be modular and adaptable. You can:
 - Integrate with existing maintenance management systems
 - Add specialized visualizations for domain-specific insights
 
-## Project Structure
-
-```
-smart-infrastructure-maintenance/
-├── data/                  # Data storage
-├── models/                # Saved models
-├── results/               # Analysis results and visualizations
-├── smart_infrastructure/  # Main package
-│   ├── __init__.py
-│   ├── predictive_maintenance.py  # Core system
-│   └── utils/
-│       ├── preprocessing.py
-│       ├── visualization.py
-│       └── evaluation.py
-├── examples/              # Example scripts
-├── notebooks/             # Jupyter notebooks for exploration
-├── tests/                 # Unit tests
-├── requirements.txt       # Dependencies
-└── README.md              # This file
-```
 
 ## Requirements
 
