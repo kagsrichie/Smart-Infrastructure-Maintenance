@@ -67,7 +67,7 @@ This project implements a complete predictive maintenance solution that helps in
 ## Interactive Dashboard
 The system includes a comprehensive HTML dashboard  for operational monitoring and decision support. This interactive interface serves as the central command center for maintenance teams.
 
-![Interactive Dashboard](images/interactive_dashboard.png) 
+![Interactive Dashboard](images/Interactive_dashboard.png) 
 
 ## Installation
 
