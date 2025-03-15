@@ -132,9 +132,15 @@ def generate_synthetic_data(n_samples=5000, n_equipment=50, start_date='2022-01-
     for i in range(len(weather_periods) - 1):
         weather_mapping[(weather_periods[i], weather_periods[i+1])] = np.random.choice(weather_conditions)
     
-    df['weather_condition'] = df['timestamp'].apply(
-        lambda ts: next(v for (s, e), v in weather_mapping.items() if s <= ts < e)
-    )
+    # Add handling for dates that might be outside the defined periods
+    def get_weather(ts):
+        for (s, e), v in weather_mapping.items():
+            if s <= ts < e:
+                return v
+        # Fallback - return "Normal" for any date outside defined periods
+        return "Normal"
+    
+    df['weather_condition'] = df['timestamp'].apply(get_weather)
     
     # Generate base sensor readings
     for eq_id in equipment_ids:
@@ -355,36 +361,20 @@ def plot_data_insights(df, save_dir=None):
     
     plt.show()
 
-def main():
-    parser = argparse.ArgumentParser(description='Generate synthetic data for predictive maintenance.')
-    parser.add_argument('--samples', type=int, default=10000, help='Number of samples to generate')
-    parser.add_argument('--equipment', type=int, default=100, help='Number of equipment units')
-    parser.add_argument('--start_date', type=str, default='2022-01-01', help='Start date (YYYY-MM-DD)')
-    parser.add_argument('--end_date', type=str, default='2023-01-01', help='End date (YYYY-MM-DD)')
-    parser.add_argument('--threshold', type=float, default=0.7, help='Failure threshold (0-1)')
-    parser.add_argument('--noise', type=float, default=0.15, help='Sensor noise level (0-1)')
-    parser.add_argument('--output', type=str, default='data/maintenance_data.csv', help='Output file path')
-    parser.add_argument('--no_trends', action='store_false', dest='trends', help='Disable time-based trends')
-    parser.add_argument('--visualize', action='store_true', help='Create visualizations of the data')
-    parser.add_argument('--plots_dir', type=str, default='results/data_plots', help='Directory to save plots')
-    
-    args = parser.parse_args()
-    
-    # Generate the data
+# This part is modified to directly generate data rather than using argparse
+if __name__ == "__main__":
+    # Create directories if they don't exist
+    for directory in ['data', 'models', 'results']:
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+            
     df = generate_synthetic_data(
-        n_samples=args.samples,
-        n_equipment=args.equipment,
-        start_date=args.start_date,
-        end_date=args.end_date,
-        failure_threshold=args.threshold,
-        sensor_noise=args.noise,
-        add_trends=args.trends,
-        save_path=args.output
+        n_samples=5000,
+        n_equipment=50,
+        start_date='2022-01-01',
+        end_date='2023-01-01',
+        save_path='data/maintenance_data.csv'
     )
     
-    # Create visualizations if requested
-    if args.visualize:
-        plot_data_insights(df, args.plots_dir)
-
-if __name__ == "__main__":
-    main()
+    # Visualize the data
+    plot_data_insights(df, save_dir='results/data_plots')
