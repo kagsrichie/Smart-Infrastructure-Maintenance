@@ -205,7 +205,68 @@ maintenance_system.create_maintenance_schedule(
 | RF    | 0.92     | 0.89      | 0.86   | 0.88     | 0.96    |
 | XGB   | 0.93     | 0.91      | 0.87   | 0.89     | 0.97    |
 
+### Model Visualizations
 
+#### Random Forest Performance
+![Random Forest ROC Curve](images/rf_roc_curve.png)
+*Figure 1: The Random Forest model demonstrates strong predictive performance with an AUC of 0.96.*
+
+![Random Forest Confusion Matrix](images/rf_confusion_matrix.png)
+*Figure 2: Confusion matrix showing the accuracy of the Random Forest model in classifying equipment failures versus normal operation.*
+
+#### XGBoost Performance
+![XGBoost ROC Curve](images/xgb_roc_curve.png)
+*Figure 3: The XGBoost model slightly outperforms Random Forest with an AUC of 0.97.*
+
+![XGBoost Confusion Matrix](images/xgb_confusion_matrix.png)
+*Figure 4: Confusion matrix for the XGBoost model showing high precision and recall for failure prediction.*
+
+#### Performance Tracking
+![Performance Over Time](images/performance_over_time.png)
+*Figure 5: Model performance remains stable over the testing period, with consistent F1 scores above 0.85.*
+
+### Feature Analysis
+
+![Feature Importance](images/rf_feature_importance.png)
+*Figure 6: The most predictive features for equipment failure, ranked by importance. Vibration sensors and operational hours contribute significantly to failure prediction.*
+
+### Risk Assessment
+
+![Risk Categories](images/risk_categories.png)
+*Figure 7: Distribution of equipment across risk categories. This visualization helps maintenance teams prioritize their work.*
+
+### Data Insights
+
+![Numerical Histograms](images/numerical_histograms.png)
+*Figure 8: Distribution of key sensor readings, showing normal operational ranges and outliers.*
+
+![Correlation Matrix](images/correlation_matrix.png)
+*Figure 9: Correlation between different sensor readings and operational parameters, highlighting interdependencies.*
+
+![Class Distribution](images/class_distribution.png)
+*Figure 10: The distribution of failure vs. non-failure cases in the dataset, showing the class balance used for training.*
+
+### Maintenance Planning
+
+The system generates actionable maintenance schedules based on predicted risk levels:
+
+```
+Example from maintenance_schedule.csv:
+
+equipment_id, risk_score, recommended_action, deadline, estimated_downtime
+EQ-1042, 0.89, "Immediate inspection required", 2023-06-15, 4h
+EQ-3701, 0.72, "Schedule maintenance within 7 days", 2023-06-22, 2h
+EQ-2865, 0.34, "Monitor during next routine check", 2023-07-10, 1h
+```
+
+### Interactive Dashboard
+
+The system provides an interactive HTML dashboard (`deployment_dashboard.html`) that allows maintenance teams to:
+- View real-time risk assessments for all equipment
+- Drill down into specific failure predictions
+- Track maintenance history and effectiveness
+- Analyze trends in equipment performance
+- Optimize maintenance scheduling based on risk and operational constraints
 
 ## Use Cases
 
@@ -223,7 +284,6 @@ The system is designed to be modular and adaptable. You can:
 - Implement custom preprocessing steps for specific data types
 - Integrate with existing maintenance management systems
 - Add specialized visualizations for domain-specific insights
-
 
 ## Requirements
 
